@@ -4,4 +4,4 @@ Practice of DDD refactoring from [Carola Lilienthal](https://twitter.com/Cairola
 
 The main branch contains the legacy code and the 'refactoring' branch contains the refactored code. Every step has a commit.
 
-Works in progress :)
+Works in progress on 'refactoring' branch :)
