@@ -73,10 +73,10 @@ public class AccountManagementServiceTest {
 	void testAMSTransferMoney() {
 		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
 
-		Set<Integer> accountNumbers = ams.getAccountNumberList();
-		Iterator<Integer> iterator = accountNumbers.iterator();
-		int debitorAccountNumber = iterator.next();
-		int creditorAccountNumber = iterator.next();
+		Set<AccountNumber> accountNumbers = ams.getAccountNumberList();
+		Iterator<AccountNumber> iterator = accountNumbers.iterator();
+		AccountNumber debitorAccountNumber = iterator.next();
+		AccountNumber creditorAccountNumber = iterator.next();
 		float debitorSaldo = ams.getAccount(debitorAccountNumber).getBalance();
 		float creditorSaldo = ams.getAccount(creditorAccountNumber).getBalance();
 		ams.transferMoney(100, debitorAccountNumber, creditorAccountNumber);

@@ -10,8 +10,7 @@ import java.util.Set;
 public class AccountManagementService {
 	private Map<Integer, Customer> customerList = new HashMap<Integer, Customer>();
 	private int customerNumberCounter = 0;
-	private Map<Integer, Account> accountList = new HashMap<Integer, Account>();
-	private int accountNumberCounter = 0;
+	private Map<AccountNumber, Account> accountList = new HashMap<>();
 
 	public AccountManagementService() {
 
@@ -24,7 +23,7 @@ public class AccountManagementService {
 	}
 
 	public Account newAccount(float balance, Customer customer) {
-		Account account = new Account(accountNumberCounter++, customer);
+		Account account = new Account(customer);
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		customer.getAccountList().add(account);
@@ -39,7 +38,7 @@ public class AccountManagementService {
 		return new ArrayList<Customer>(customerList.values());
 	}
 
-	public void transferMoney(float amount, int debitorAccountNumber, int creditorAccountNumber) {
+	public void transferMoney(float amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
 		float balance = accountList.get(debitorAccountNumber).getBalance();
 		balance = balance - amount;
 		accountList.get(debitorAccountNumber).setBalance(balance);
@@ -50,16 +49,15 @@ public class AccountManagementService {
 
 	}
 
-	public Set<Integer> getAccountNumberList() {
-
+	public Set<AccountNumber> getAccountNumberList() {
 		return accountList.keySet();
 	}
 
-	public Account getAccount(int accountNumber) {
+	public Account getAccount(AccountNumber accountNumber) {
 		return accountList.get(accountNumber);
 	}
 
-	public Customer getCustomer(int accountNumber) {
+	public Customer getCustomer(AccountNumber accountNumber) {
 		return accountList.get(accountNumber).getAccountowner();
 	}
 

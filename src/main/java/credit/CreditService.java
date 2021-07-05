@@ -13,8 +13,7 @@ public class CreditService {
 
 	private Map<Integer, CreditCustomer> customerList = new HashMap<>();
 	private int customerNumberCounter = 0;
-	private Map<Integer, CreditAccount> accountList = new HashMap<>();
-	private int accountNumberCounter = 0;
+	private Map<AccountNumber, CreditAccount> accountList = new HashMap<>();
 
 	private int creditNumberCounter = 0;
 	private Map<Integer, Credit> creditList = new HashMap<>();
@@ -41,7 +40,7 @@ public class CreditService {
 	}
 
 	public CreditAccount newCreditAccount(Credit credit) {
-		CreditAccount account = new CreditAccount(accountNumberCounter++, credit);
+		CreditAccount account = new CreditAccount(credit);
 		accountList.put(account.getAccountnumber(), account);
 		credit.getCustomer().getAccountList().add(account);
 		return account;
@@ -51,11 +50,11 @@ public class CreditService {
 		return new ArrayList<CreditAccount>(accountList.values());
 	}
 
-	public CreditAccount getAccount(int accountNumber) {
+	public CreditAccount getAccount(AccountNumber accountNumber) {
 		return accountList.get(accountNumber);
 	}
 
-	public Set<Integer> getAccountNumberList() {
+	public Set<AccountNumber> getAccountNumberList() {
 		return accountList.keySet();
 	}
 
@@ -71,7 +70,7 @@ public class CreditService {
 		return creditList.get(creditNumber);
 	}
 
-	public Credit getCreditFromAccountNumber(int accountNumber) {
+	public Credit getCreditFromAccountNumber(AccountNumber accountNumber) {
 		CreditAccount account = (CreditAccount) this.getAccount(accountNumber);
 		return creditList.get(account.getCredit().getCreditNumber());
 	}
@@ -85,7 +84,7 @@ public class CreditService {
 
 	}
 
-	public void makePaymentForCreditAccount(int accountNumber, float amount) {
+	public void makePaymentForCreditAccount(AccountNumber accountNumber, float amount) {
 		CreditAccount account = this.getAccount(accountNumber);
 		float balance = account.getBalance();
 		balance = balance + amount;
