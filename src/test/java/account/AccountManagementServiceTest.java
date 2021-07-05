@@ -10,9 +10,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import credit.Credit;
-import credit.CreditAccount;
-
 public class AccountManagementServiceTest {
 
 	public static AccountManagementService prepareTestData() {
@@ -68,15 +65,7 @@ public class AccountManagementServiceTest {
 		assertTrue(newCustomer.getAccountList().contains(newAccount));
 		assertEquals(11, ams.getAccountList().size());
 
-		Credit credit = new Credit(1000, newCustomer, 10);
-		CreditAccount newCreditAccount = ams.newCreditAccount(credit);
-		assertTrue(ams.getAccountList().contains(newCreditAccount));
-		assertEquals(newCreditAccount, ams.getAccount(newCreditAccount.getAccountnumber()));
-		assertEquals(12, ams.getAccountList().size());
-
 		assertTrue(ams.getAccountNumberList().contains(newAccount.getAccountnumber()));
-		assertTrue(ams.getAccountNumberList().contains(newCreditAccount.getAccountnumber()));
-		assertTrue(newCustomer.getAccountList().contains(newCreditAccount));
 
 	}
 

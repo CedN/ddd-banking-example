@@ -1,19 +1,17 @@
 package credit;
 
-import account.Customer;
-
 public class Credit {
 	private float amountOfCredit;
 	private int creditNumber;
 	private Status status;
-	private Customer customer;
+	private CreditCustomer customer;
 	private CreditAccount account;
 
 	public enum Status {
 		applied, refused, granted, delayed, payed
 	};
 
-	public Credit(int creditNumber, Customer customer, float amountOfCredit) {
+	public Credit(int creditNumber, CreditCustomer customer, float amountOfCredit) {
 		super();
 		this.amountOfCredit = amountOfCredit;
 		this.creditNumber = creditNumber;
@@ -30,7 +28,7 @@ public class Credit {
 		this.amountOfCredit = amountOfCredit;
 	}
 
-	public Customer getCustomer() {
+	public CreditCustomer getCustomer() {
 		return customer;
 	}
 

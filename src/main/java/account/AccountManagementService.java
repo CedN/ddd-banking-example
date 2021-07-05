@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import credit.Credit;
-import credit.CreditAccount;
-
 public class AccountManagementService {
 	private Map<Integer, Customer> customerList = new HashMap<Integer, Customer>();
 	private int customerNumberCounter = 0;
@@ -31,13 +28,6 @@ public class AccountManagementService {
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		customer.getAccountList().add(account);
-		return account;
-	}
-
-	public CreditAccount newCreditAccount(Credit credit) {
-		CreditAccount account = new CreditAccount(accountNumberCounter++, credit);
-		accountList.put(account.getAccountnumber(), account);
-		credit.getCustomer().getAccountList().add(account);
 		return account;
 	}
 
