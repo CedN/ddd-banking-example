@@ -1,13 +1,12 @@
-package application;
+package credit;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import models.Account;
-import models.Credit;
-import models.Credit.Status;
-import models.CreditAccount;
-import models.Customer;
+import account.Account;
+import account.AccountManagementService;
+import account.Customer;
+import credit.Credit.Status;
 
 public class CreditService {
 	private AccountManagementService accountManagementService = null;

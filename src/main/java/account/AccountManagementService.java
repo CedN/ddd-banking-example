@@ -1,4 +1,4 @@
-package application;
+package account;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import models.Account;
-import models.Credit;
-import models.CreditAccount;
-import models.Customer;
+import credit.Credit;
+import credit.CreditAccount;
 
 public class AccountManagementService {
 	private Map<Integer, Customer> customerList = new HashMap<Integer, Customer>();

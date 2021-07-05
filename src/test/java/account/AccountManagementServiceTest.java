@@ -1,4 +1,4 @@
-package application;
+package account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -10,12 +10,10 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import models.Account;
-import models.Credit;
-import models.CreditAccount;
-import models.Customer;
+import credit.Credit;
+import credit.CreditAccount;
 
-class AccountManagementServiceTest {
+public class AccountManagementServiceTest {
 
 	public static AccountManagementService prepareTestData() {
 		AccountManagementService ams = new AccountManagementService();

@@ -1,4 +1,6 @@
-package models;
+package credit;
+
+import account.Account;
 
 public class CreditAccount extends Account {
 	private Credit credit;

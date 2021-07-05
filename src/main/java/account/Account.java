@@ -1,4 +1,4 @@
-package models;
+package account;
 
 public class Account {
 	private float balance;

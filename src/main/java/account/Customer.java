@@ -1,7 +1,9 @@
-package models;
+package account;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import credit.Credit;
 
 public class Customer {
 	private String firstName;

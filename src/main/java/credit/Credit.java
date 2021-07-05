@@ -1,4 +1,6 @@
-package models;
+package credit;
+
+import account.Customer;
 
 public class Credit {
 	private float amountOfCredit;
