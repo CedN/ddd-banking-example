@@ -2,7 +2,7 @@ package credit;
 
 public class Credit {
 	private float amountOfCredit;
-	private int creditNumber;
+	private CreditNumber creditNumber;
 	private Status status;
 	private CreditCustomer customer;
 	private CreditAccount account;
@@ -11,10 +11,10 @@ public class Credit {
 		applied, refused, granted, delayed, payed
 	};
 
-	public Credit(int creditNumber, CreditCustomer customer, float amountOfCredit) {
+	public Credit(CreditCustomer customer, float amountOfCredit) {
 		super();
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = creditNumber;
+		this.creditNumber = new CreditNumber();
 		this.customer = customer;
 		this.customer.getCreditList().add(this);
 		this.status = Status.applied;
@@ -32,7 +32,7 @@ public class Credit {
 		return customer;
 	}
 
-	public int getCreditNumber() {
+	public CreditNumber getCreditNumber() {
 		return creditNumber;
 	}
 

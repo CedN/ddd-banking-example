@@ -1,6 +1,7 @@
 package credit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
@@ -13,10 +14,10 @@ class CreditTest {
 	void testCreditConstruction() {
 
 		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
-		Credit credit = new Credit(12, customer, 1000);
+		Credit credit = new Credit(customer, 1000);
 		assertEquals(1000, credit.getAmountOfCredit());
 		assertEquals(customer, credit.getCustomer());
-		assertEquals(12, credit.getCreditNumber());
+		assertNotNull(credit.getCreditNumber().value());
 		assertTrue(customer.getCreditList().contains(credit));
 	}
 }
