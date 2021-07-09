@@ -1,7 +1,7 @@
 package credit;
 
 public class CreditAccount {
-	private float balance;
+	private Amount balance;
 	private AccountNumber accountNumber;
 	private CreditCustomer accountOwner;
 	private Credit credit;
@@ -9,7 +9,7 @@ public class CreditAccount {
 	public CreditAccount(Credit credit) {
 		this.accountNumber = new AccountNumber();
 		this.accountOwner = credit.getCustomer();
-		this.setBalance(-(credit.getAmountOfCredit()));
+		this.balance = new Amount(-credit.getAmountOfCredit().value());
 		this.credit = credit;
 	}
 
@@ -17,11 +17,11 @@ public class CreditAccount {
 		return credit;
 	}
 
-	public float getBalance() {
+	public Amount getBalance() {
 		return balance;
 	}
 
-	public void setBalance(float balance) {
+	public void setBalance(Amount balance) {
 		this.balance = balance;
 	}
 

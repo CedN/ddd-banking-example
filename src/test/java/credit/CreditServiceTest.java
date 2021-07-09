@@ -28,7 +28,7 @@ class CreditServiceTest {
 		CreditService cs = prepareTestData();
 
 		CreditCustomer newCustomer = cs.newCustomer("Tea", "Ginster", LocalDate.of(1950, 12, 2));
-		Credit credit = new Credit(newCustomer, 10);
+		Credit credit = new Credit(newCustomer, new Amount(10));
 		CreditAccount newCreditAccount = cs.newCreditAccount(credit);
 		assertTrue(cs.getAccountList().contains(newCreditAccount));
 		assertEquals(newCreditAccount, cs.getAccount(newCreditAccount.getAccountnumber()));
@@ -42,9 +42,9 @@ class CreditServiceTest {
 	void testCSCreation() {
 		CreditService cs = CreditServiceTest.prepareTestData();
 
-		CreditNumber creditNumber = cs.applyForCredit(1000, cs.getCustomerList().get(0));
+		CreditNumber creditNumber = cs.applyForCredit(new Amount(1000), cs.getCustomerList().get(0));
 		Credit credit = cs.getCredit(creditNumber);
-		assertEquals(1000, credit.getAmountOfCredit());
+		assertEquals(new Amount(1000), credit.getAmountOfCredit());
 		assertTrue(credit.getStatus() == Status.applied);
 
 		CreditAccount creditAccount = cs.grantCredit(creditNumber);
@@ -66,19 +66,19 @@ class CreditServiceTest {
 	void testCreditProcess() {
 		CreditService cs = prepareTestData();
 
-		CreditNumber creditNumber = cs.applyForCredit(1000, cs.getCustomerList().get(0));
+		CreditNumber creditNumber = cs.applyForCredit(new Amount(1000), cs.getCustomerList().get(0));
 		Credit credit = cs.getCredit(creditNumber);
 
 		CreditAccount creditAccount = cs.grantCredit(creditNumber);
 		assertEquals(credit, creditAccount.getCredit());
 		assertTrue(credit.getStatus() == Status.granted);
 		assertTrue(credit.getAccount() == creditAccount);
-		assertEquals(-1000, creditAccount.getBalance());
+		assertEquals(new Amount(-1000), creditAccount.getBalance());
 		assertEquals(1, cs.getAccountList().size());
 
-		cs.makePaymentForCredit(creditNumber, 100);
-		assertEquals(-900, creditAccount.getBalance());
-		assertEquals(1000, credit.getAmountOfCredit());
+		cs.makePaymentForCredit(creditNumber, new Amount(100));
+		assertEquals(new Amount(-900), creditAccount.getBalance());
+		assertEquals(new Amount(1000), credit.getAmountOfCredit());
 
 	}
 

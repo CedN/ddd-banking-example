@@ -28,7 +28,7 @@ public class CreditService {
 		return new ArrayList<CreditCustomer>(customerList.values());
 	}
 
-	public CreditNumber applyForCredit(float amount, CreditCustomer customer) {
+	public CreditNumber applyForCredit(Amount amount, CreditCustomer customer) {
 		Credit credit = new Credit(customer, amount);
 		creditList.put(credit.getCreditNumber(), credit);
 		customer.getCreditList().add(credit);
@@ -72,19 +72,19 @@ public class CreditService {
 		return creditList.get(account.getCredit().getCreditNumber());
 	}
 
-	public void makePaymentForCredit(CreditNumber creditNumber, float amount) {
+	public void makePaymentForCredit(CreditNumber creditNumber, Amount amount) {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount();
-		float balance = creditAccount.getBalance();
-		balance = balance + amount;
+		Amount balance = creditAccount.getBalance();
+		balance = balance.add(amount);
 		creditAccount.setBalance(balance);
 
 	}
 
-	public void makePaymentForCreditAccount(AccountNumber accountNumber, float amount) {
+	public void makePaymentForCreditAccount(AccountNumber accountNumber, Amount amount) {
 		CreditAccount account = this.getAccount(accountNumber);
-		float balance = account.getBalance();
-		balance = balance + amount;
+		Amount balance = account.getBalance();
+		balance = balance.add(amount);
 		account.setBalance(balance);
 
 	}

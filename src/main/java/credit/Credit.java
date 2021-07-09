@@ -1,7 +1,7 @@
 package credit;
 
 public class Credit {
-	private float amountOfCredit;
+	private Amount amountOfCredit;
 	private CreditNumber creditNumber;
 	private Status status;
 	private CreditCustomer customer;
@@ -11,7 +11,7 @@ public class Credit {
 		applied, refused, granted, delayed, payed
 	};
 
-	public Credit(CreditCustomer customer, float amountOfCredit) {
+	public Credit(CreditCustomer customer, Amount amountOfCredit) {
 		super();
 		this.amountOfCredit = amountOfCredit;
 		this.creditNumber = new CreditNumber();
@@ -19,11 +19,11 @@ public class Credit {
 		this.status = Status.applied;
 	}
 
-	public float getAmountOfCredit() {
+	public Amount getAmountOfCredit() {
 		return amountOfCredit;
 	}
 
-	public void setAmountOfCredit(float amountOfCredit) {
+	public void setAmountOfCredit(Amount amountOfCredit) {
 		this.amountOfCredit = amountOfCredit;
 	}
 

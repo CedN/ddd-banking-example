@@ -13,8 +13,8 @@ class CreditTest {
 	void testCreditConstruction() {
 
 		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
-		Credit credit = new Credit(customer, 1000);
-		assertEquals(1000, credit.getAmountOfCredit());
+		Credit credit = new Credit(customer, new Amount(1000));
+		assertEquals(new Amount(1000), credit.getAmountOfCredit());
 		assertEquals(customer, credit.getCustomer());
 		assertNotNull(credit.getCreditNumber());
 	}

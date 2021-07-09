@@ -21,7 +21,7 @@ public class AccountManagementService {
 		return customer;
 	}
 
-	public Account newAccount(float balance, Customer customer) {
+	public Account newAccount(Amount balance, Customer customer) {
 		Account account = new Account(customer);
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
@@ -37,13 +37,13 @@ public class AccountManagementService {
 		return new ArrayList<Customer>(customerList.values());
 	}
 
-	public void transferMoney(float amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
-		float balance = accountList.get(debitorAccountNumber).getBalance();
-		balance = balance - amount;
+	public void transferMoney(Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
+		Amount balance = accountList.get(debitorAccountNumber).getBalance();
+		balance = balance.substract(amount);
 		accountList.get(debitorAccountNumber).setBalance(balance);
 
 		balance = accountList.get(creditorAccountNumber).getBalance();
-		balance = balance + amount;
+		balance = balance.add(amount);
 		accountList.get(creditorAccountNumber).setBalance(balance);
 
 	}

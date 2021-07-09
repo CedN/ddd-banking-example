@@ -1,22 +1,22 @@
 package account;
 
 public class Account {
-	private float balance;
+	private Amount balance;
 	private AccountNumber accountNumber;
 	private Customer accountOwner;
 
 	public Account(Customer accountOwner) {
 		super();
-		this.balance = 0;
+		this.balance = new Amount(0);
 		this.accountNumber = new AccountNumber();
 		this.accountOwner = accountOwner;
 	}
 
-	public float getBalance() {
+	public Amount getBalance() {
 		return balance;
 	}
 
-	public void setBalance(float balance) {
+	public void setBalance(Amount balance) {
 		this.balance = balance;
 	}
 
