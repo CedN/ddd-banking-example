@@ -1,14 +1,14 @@
-package models;
+package account;
 
 public class Account {
 	private float balance;
-	private int accountNumber;
+	private AccountNumber accountNumber;
 	private Customer accountOwner;
 
-	public Account(int accountNumber, Customer accountOwner) {
+	public Account(Customer accountOwner) {
 		super();
 		this.balance = 0;
-		this.accountNumber = accountNumber;
+		this.accountNumber = new AccountNumber();
 		this.accountOwner = accountOwner;
 	}
 
@@ -20,7 +20,7 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public int getAccountnumber() {
+	public AccountNumber getAccountnumber() {
 		return accountNumber;
 	}
 

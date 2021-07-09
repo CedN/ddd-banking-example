@@ -1,4 +1,4 @@
-package application;
+package account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -10,12 +10,7 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import models.Account;
-import models.Credit;
-import models.CreditAccount;
-import models.Customer;
-
-class AccountManagementServiceTest {
+public class AccountManagementServiceTest {
 
 	public static AccountManagementService prepareTestData() {
 		AccountManagementService ams = new AccountManagementService();
@@ -70,15 +65,7 @@ class AccountManagementServiceTest {
 		assertTrue(newCustomer.getAccountList().contains(newAccount));
 		assertEquals(11, ams.getAccountList().size());
 
-		Credit credit = new Credit(1000, newCustomer, 10);
-		CreditAccount newCreditAccount = ams.newCreditAccount(credit);
-		assertTrue(ams.getAccountList().contains(newCreditAccount));
-		assertEquals(newCreditAccount, ams.getAccount(newCreditAccount.getAccountnumber()));
-		assertEquals(12, ams.getAccountList().size());
-
 		assertTrue(ams.getAccountNumberList().contains(newAccount.getAccountnumber()));
-		assertTrue(ams.getAccountNumberList().contains(newCreditAccount.getAccountnumber()));
-		assertTrue(newCustomer.getAccountList().contains(newCreditAccount));
 
 	}
 
@@ -86,10 +73,10 @@ class AccountManagementServiceTest {
 	void testAMSTransferMoney() {
 		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
 
-		Set<Integer> accountNumbers = ams.getAccountNumberList();
-		Iterator<Integer> iterator = accountNumbers.iterator();
-		int debitorAccountNumber = iterator.next();
-		int creditorAccountNumber = iterator.next();
+		Set<AccountNumber> accountNumbers = ams.getAccountNumberList();
+		Iterator<AccountNumber> iterator = accountNumbers.iterator();
+		AccountNumber debitorAccountNumber = iterator.next();
+		AccountNumber creditorAccountNumber = iterator.next();
 		float debitorSaldo = ams.getAccount(debitorAccountNumber).getBalance();
 		float creditorSaldo = ams.getAccount(creditorAccountNumber).getBalance();
 		ams.transferMoney(100, debitorAccountNumber, creditorAccountNumber);

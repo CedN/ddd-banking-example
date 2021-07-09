@@ -1,22 +1,21 @@
-package models;
+package credit;
 
 public class Credit {
 	private float amountOfCredit;
-	private int creditNumber;
+	private CreditNumber creditNumber;
 	private Status status;
-	private Customer customer;
+	private CreditCustomer customer;
 	private CreditAccount account;
 
 	public enum Status {
 		applied, refused, granted, delayed, payed
 	};
 
-	public Credit(int creditNumber, Customer customer, float amountOfCredit) {
+	public Credit(CreditCustomer customer, float amountOfCredit) {
 		super();
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = creditNumber;
+		this.creditNumber = new CreditNumber();
 		this.customer = customer;
-		this.customer.getCreditList().add(this);
 		this.status = Status.applied;
 	}
 
@@ -28,11 +27,11 @@ public class Credit {
 		this.amountOfCredit = amountOfCredit;
 	}
 
-	public Customer getCustomer() {
+	public CreditCustomer getCustomer() {
 		return customer;
 	}
 
-	public int getCreditNumber() {
+	public CreditNumber getCreditNumber() {
 		return creditNumber;
 	}
 
