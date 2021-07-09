@@ -16,7 +16,7 @@ class CustomerTest {
 		assertEquals("Carola", customer.getFirstName());
 		assertEquals("Lilienthal", customer.getFamilyName());
 		assertEquals(LocalDate.of(1967, 9, 11), customer.getDateOfBirth());
-		assertEquals(1, customer.getCustomerNumber().value());
+		assertNotNull(customer.getCustomerNumber());
 		assertNotNull(customer.getAccountList());
 	}
 

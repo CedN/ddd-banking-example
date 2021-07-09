@@ -16,6 +16,6 @@ class CreditTest {
 		Credit credit = new Credit(customer, 1000);
 		assertEquals(1000, credit.getAmountOfCredit());
 		assertEquals(customer, credit.getCustomer());
-		assertNotNull(credit.getCreditNumber().value());
+		assertNotNull(credit.getCreditNumber());
 	}
 }
