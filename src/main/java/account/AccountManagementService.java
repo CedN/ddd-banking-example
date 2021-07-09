@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class AccountManagementService {
-	private Map<Integer, Customer> customerList = new HashMap<Integer, Customer>();
-	private int customerNumberCounter = 0;
+	private Map<CustomerNumber, Customer> customerList = new HashMap<>();
 	private Map<AccountNumber, Account> accountList = new HashMap<>();
 
 	public AccountManagementService() {
@@ -17,7 +16,7 @@ public class AccountManagementService {
 	}
 
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
-		Customer customer = new Customer(firstName, familyName, dateOfBirth, customerNumberCounter++);
+		Customer customer = new Customer(firstName, familyName, dateOfBirth);
 		customerList.put(customer.getCustomerNumber(), customer);
 		return customer;
 	}

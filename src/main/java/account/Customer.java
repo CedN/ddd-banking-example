@@ -7,15 +7,15 @@ public class Customer {
 	private String firstName;
 	private String familyName;
 	private LocalDate dateOfBirth;
-	private int customerNumber;
+	private CustomerNumber customerNumber;
 	private List<Account> accountList;
 	
-	public Customer(String firstName, String familyName, LocalDate dateOfBirth, int customerNumber) {
+	public Customer(String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = customerNumber;
+		this.customerNumber = new CustomerNumber();
 		accountList = new ArrayList<Account>();
 	}
 
@@ -31,7 +31,7 @@ public class Customer {
 		return dateOfBirth;
 	}
 
-	public int getCustomerNumber() {
+	public CustomerNumber getCustomerNumber() {
 		return customerNumber;
 	}
 		

@@ -11,8 +11,7 @@ import credit.Credit.Status;
 
 public class CreditService {
 
-	private Map<Integer, CreditCustomer> customerList = new HashMap<>();
-	private int customerNumberCounter = 0;
+	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<>();
 	private Map<AccountNumber, CreditAccount> accountList = new HashMap<>();
 
 	private int creditNumberCounter = 0;
@@ -22,7 +21,7 @@ public class CreditService {
 	}
 
 	public CreditCustomer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
-		CreditCustomer customer = new CreditCustomer(firstName, familyName, dateOfBirth, customerNumberCounter++);
+		CreditCustomer customer = new CreditCustomer(firstName, familyName, dateOfBirth);
 		customerList.put(customer.getCustomerNumber(), customer);
 		return customer;
 	}

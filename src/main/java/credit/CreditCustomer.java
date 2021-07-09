@@ -8,16 +8,16 @@ public class CreditCustomer {
 	private String firstName;
 	private String familyName;
 	private LocalDate dateOfBirth;
-	private int customerNumber;
+	private CustomerNumber customerNumber;
 	private List<CreditAccount> accountList;
 	private List<Credit> creditList;
 	
-	public CreditCustomer(String firstName, String familyName, LocalDate dateOfBirth, int customerNumber) {
+	public CreditCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = customerNumber;
+		this.customerNumber = new CustomerNumber();
 		accountList = new ArrayList<CreditAccount>();
 		creditList = new ArrayList<Credit>();
 	}
@@ -34,7 +34,7 @@ public class CreditCustomer {
 		return dateOfBirth;
 	}
 
-	public int getCustomerNumber() {
+	public CustomerNumber getCustomerNumber() {
 		return customerNumber;
 	}
 		
