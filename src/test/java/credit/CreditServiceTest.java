@@ -55,6 +55,7 @@ class CreditServiceTest {
 		assertTrue(cs.getCustomerList().contains(creditAccount.getAccountowner()));
 		assertEquals(1, cs.getAccountList().size());
 		assertEquals(credit, creditAccount.getCredit());
+		assertTrue(credit.getCustomer().getCreditList().contains(credit));
 
 		Credit credit2 = cs.getCreditFromAccountNumber(creditAccount.getAccountnumber());
 		assertEquals(credit, credit2);

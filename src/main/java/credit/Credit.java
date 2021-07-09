@@ -16,7 +16,6 @@ public class Credit {
 		this.amountOfCredit = amountOfCredit;
 		this.creditNumber = new CreditNumber();
 		this.customer = customer;
-		this.customer.getCreditList().add(this);
 		this.status = Status.applied;
 	}
 

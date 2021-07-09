@@ -31,6 +31,7 @@ public class CreditService {
 	public CreditNumber applyForCredit(float amount, CreditCustomer customer) {
 		Credit credit = new Credit(customer, amount);
 		creditList.put(credit.getCreditNumber(), credit);
+		customer.getCreditList().add(credit);
 
 		return credit.getCreditNumber();
 	}
